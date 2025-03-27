@@ -129,3 +129,6 @@ Future<Map<String, dynamic>> fetchQuiz() async {
 ## 5. 문제점
 
 새로고침을 하거나 핫리로드를 할 때 API 가져오는 속도가 느려서 오류가 발생합니다.
+그리고 새로운 문제 버튼 클릭시, service.dart의
+    throw Exception('퀴즈를 불러오지 못했습니다.');
+해당 에러 발생
