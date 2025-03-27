@@ -1,4 +1,3 @@
-```markdown
 # Flutter 랜덤 퀴즈 앱
 
 ## 1. 프로젝트 개요
@@ -11,9 +10,9 @@ Flutter를 사용하여 랜덤 퀴즈를 제공하는 앱입니다. Open Trivia 
 *   FutureBuilder
 *   API 호출 (HTTP 요청)
 
-<img src="https://github.com/user-attachments/assets/494eff4f-6c67-49de-bb39-a8dbc9d1fde8" width="400">
+<img src="https://github.com/user-attachments/assets/d1f876d1-8869-43f1-88bd-ad4ad70eae7c" width="250">
+<img width="537" alt="결과" src="https://github.com/user-attachments/assets/14f329ef-fc0c-46a8-90bc-bb96cb6df934" />
 
-<img width="537" alt="결과 화면" src="https://github.com/user-attachments/assets/9b6e3903-b9a2-48dc-b6b2-7a8cbfabb2fa" />
 
 ## 2. 주요 기능
 
@@ -68,9 +67,9 @@ FutureBuilder(
   future: fetchQuiz(),
   builder: (context, snapshot) {
     if (snapshot.hasData) {
-      final correctAnswer = snapshot.data!['results'][0]['correct_answer'];
-      final incorrectAnswers = snapshot.data!['results'][0]['incorrect_answers'];
-      final answers = [correctAnswer, ...incorrectAnswers]..shuffle();
+      final correctAnswer = snapshot.data!['results'][0]['correct_answer']; //답이라서 하나의 문자열임
+      final incorrectAnswers = snapshot.data!['results'][0]['incorrect_answers']; 
+      final answers = [correctAnswer, ...incorrectAnswers]..shuffle(); //Spread Operate
 
       return Column(
         children: [
@@ -94,6 +93,7 @@ FutureBuilder(
               child: Text(answer),
             ),
           ElevatedButton(
+            //setState 사용함 - 화면 다시 그리기
             onPressed: loadNewQuiz,
             child: const Text('새로운 문제'),
           ),
@@ -129,4 +129,3 @@ Future<Map<String, dynamic>> fetchQuiz() async {
 ## 5. 문제점
 
 새로고침을 하거나 핫리로드를 할 때 API 가져오는 속도가 느려서 오류가 발생합니다.
-```
